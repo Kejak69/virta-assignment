@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.7.4 on win32)" generated="20220328 07:43:59.871" rpa="false" schemaversion="2">
+<suite id="s1" name="VirtaGlobal_Tests" source="D:\Ladatut tiedostot\virta_interview\virta_interview\tests\android_tests.robot">
+<test id="s1-t1" name="User Should Be Able To Change Android Wallpaper">
+<kw name="Open wallpaper and style settings" library="android_keywords">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>automationName=${ANDROID_AUTOMATION_NAME}</arg>
+<arg>platformName=${ANDROID_PLATFORM_NAME}</arg>
+<arg>platformVersion=${ANDROID_PLATFORM_VERSION}</arg>
+<arg>appPackage=com.google.android.apps.wallpaper</arg>
+<arg>appActivity=com.android.customization.picker.CustomizationPickerActivity</arg>
+<arg>noReset=true</arg>
+<arg>disableWindowAnimation=${WINDOW_ANIMATIONS}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |</doc>
+<status status="PASS" starttime="20220328 07:44:00.075" endtime="20220328 07:44:05.095"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:00.075" endtime="20220328 07:44:05.095"/>
+</kw>
+<kw name="Set wallpaper" library="android_keywords">
+<kw name="Select random wallpaper category" library="android_keywords">
+<kw name="Swipe" library="AppiumLibrary">
+<arg>540</arg>
+<arg>1800</arg>
+<arg>540</arg>
+<arg>300</arg>
+<doc>Swipe from one point to another point, for an optional duration.</doc>
+<status status="PASS" starttime="20220328 07:44:05.096" endtime="20220328 07:44:06.903"/>
+</kw>
+<kw name="Get Webelements" library="AppiumLibrary">
+<var>${wallpaper_categories}</var>
+<arg>com.google.android.apps.wallpaper:id/tile</arg>
+<doc>Returns list of [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] objects matching ``locator``.</doc>
+<msg timestamp="20220328 07:44:07.013" level="INFO">${wallpaper_categories} = [&lt;appium.webdriver.webelement.WebElement (session="eda48a98-5757-4bc2-aa55-b8d8c87371bd", element="00000000-0000-0228-ffff-ffff00000046")&gt;, &lt;appium.webdriver.webelement.WebElement (session="eda48a98-5...</msg>
+<status status="PASS" starttime="20220328 07:44:06.903" endtime="20220328 07:44:07.013"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${category_count}</var>
+<arg>${wallpaper_categories}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220328 07:44:07.014" level="INFO">Length is 12</msg>
+<msg timestamp="20220328 07:44:07.014" level="INFO">${category_count} = 12</msg>
+<status status="PASS" starttime="20220328 07:44:07.013" endtime="20220328 07:44:07.014"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${selected_category}</var>
+<arg>random.randint(1, ${category_count})</arg>
+<arg>random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220328 07:44:07.014" level="INFO">${selected_category} = 3</msg>
+<status status="PASS" starttime="20220328 07:44:07.014" endtime="20220328 07:44:07.014"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${wallpaper_categories}[${selected_category}]</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:07.016" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="eda48a98-5757-4bc2-aa55-b8d8c87371bd", element="00000000-0000-0228-ffff-ffff0000005c")&gt;'.</msg>
+<status status="PASS" starttime="20220328 07:44:07.014" endtime="20220328 07:44:07.071"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:05.096" endtime="20220328 07:44:07.072"/>
+</kw>
+<kw name="Select random wallpaper and save" library="android_keywords">
+<kw name="Swipe" library="AppiumLibrary">
+<arg>540</arg>
+<arg>1800</arg>
+<arg>540</arg>
+<arg>300</arg>
+<doc>Swipe from one point to another point, for an optional duration.</doc>
+<status status="PASS" starttime="20220328 07:44:07.072" endtime="20220328 07:44:08.859"/>
+</kw>
+<kw name="Get Webelements" library="AppiumLibrary">
+<var>${wallpapers}</var>
+<arg>com.google.android.apps.wallpaper:id/thumbnail</arg>
+<doc>Returns list of [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] objects matching ``locator``.</doc>
+<msg timestamp="20220328 07:44:09.021" level="INFO">${wallpapers} = [&lt;appium.webdriver.webelement.WebElement (session="eda48a98-5757-4bc2-aa55-b8d8c87371bd", element="00000000-0000-0228-ffff-ffff00000102")&gt;, &lt;appium.webdriver.webelement.WebElement (session="eda48a98-5...</msg>
+<status status="PASS" starttime="20220328 07:44:08.859" endtime="20220328 07:44:09.021"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${wallpaper_count}</var>
+<arg>${wallpapers}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220328 07:44:09.022" level="INFO">Length is 15</msg>
+<msg timestamp="20220328 07:44:09.022" level="INFO">${wallpaper_count} = 15</msg>
+<status status="PASS" starttime="20220328 07:44:09.021" endtime="20220328 07:44:09.022"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${selected_wallpaper}</var>
+<arg>random.randint(0, ${wallpaper_count})</arg>
+<arg>random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220328 07:44:09.022" level="INFO">${selected_wallpaper} = 12</msg>
+<status status="PASS" starttime="20220328 07:44:09.022" endtime="20220328 07:44:09.022"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${wallpapers}[${selected_wallpaper}]</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:09.024" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="eda48a98-5757-4bc2-aa55-b8d8c87371bd", element="00000000-0000-0228-ffff-ffff000000c3")&gt;'.</msg>
+<status status="PASS" starttime="20220328 07:44:09.022" endtime="20220328 07:44:09.071"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.apps.wallpaper:id/action_apply</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:09.071" endtime="20220328 07:44:10.434"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.google.android.apps.wallpaper:id/action_apply</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:10.436" level="INFO">Clicking element 'com.google.android.apps.wallpaper:id/action_apply'.</msg>
+<status status="PASS" starttime="20220328 07:44:10.434" endtime="20220328 07:44:10.502"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${set_wallpaper}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>com.google.android.apps.wallpaper:id/set_home_wallpaper_button</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.apps.wallpaper:id/set_home_wallpaper_button</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:10.502" endtime="20220328 07:44:11.166"/>
+</kw>
+<msg timestamp="20220328 07:44:11.166" level="INFO">${set_wallpaper} = True</msg>
+<status status="PASS" starttime="20220328 07:44:10.502" endtime="20220328 07:44:11.166"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${set_wallpaper}==${True}</arg>
+<arg>Click Element</arg>
+<arg>com.google.android.apps.wallpaper:id/set_home_wallpaper_button</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.google.android.apps.wallpaper:id/set_home_wallpaper_button</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:11.168" level="INFO">Clicking element 'com.google.android.apps.wallpaper:id/set_home_wallpaper_button'.</msg>
+<status status="PASS" starttime="20220328 07:44:11.166" endtime="20220328 07:44:11.218"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:11.166" endtime="20220328 07:44:11.218"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:07.072" endtime="20220328 07:44:11.218"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:05.096" endtime="20220328 07:44:11.218"/>
+</kw>
+<kw name="Return to home screen" library="android_keywords">
+<kw name="Press Keycode" library="AppiumLibrary">
+<arg>3</arg>
+<doc>Sends a press of keycode to the device.</doc>
+<status status="PASS" starttime="20220328 07:44:11.218" endtime="20220328 07:44:11.442"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.apps.nexuslauncher:id/g_icon</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:11.442" endtime="20220328 07:44:12.332"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:11.218" endtime="20220328 07:44:12.332"/>
+</kw>
+<kw name="Capture screenshot" library="android_keywords">
+<arg>new_wallpaper.png</arg>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<arg>${ss_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20220328 07:44:13.625" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="new_wallpaper.png"&gt;&lt;img src="new_wallpaper.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220328 07:44:12.333" endtime="20220328 07:44:13.625"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:12.332" endtime="20220328 07:44:13.625"/>
+</kw>
+<doc>Verify that user is able to change Android Home Screen wallpaper through Settings -&gt; Wallpaper &amp; style.
+For the verification, capturing screenshot in the end is enough.
+Big part of job is to understand difference between what we can and what we should automate.
+You may create Settings -shortcut to desktop if you find that more convenient. You may also add photos to your photo library if you
+want.
+Bonus point if you make the test to select random wallpaper every time it is run.</doc>
+<status status="PASS" starttime="20220328 07:44:00.074" endtime="20220328 07:44:13.626"/>
+</test>
+<test id="s1-t2" name="User Should Be Able To Add New Contact">
+<kw name="Open phone application" library="android_keywords">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>http://127.0.0.1:4723/wd/hub</arg>
+<arg>automationName=${ANDROID_AUTOMATION_NAME}</arg>
+<arg>platformName=${ANDROID_PLATFORM_NAME}</arg>
+<arg>platformVersion=${ANDROID_PLATFORM_VERSION}</arg>
+<arg>appPackage=com.android.dialer</arg>
+<arg>appActivity=.main.impl.MainActivity</arg>
+<arg>noReset=true</arg>
+<arg>disableWindowAnimation=${WINDOW_ANIMATIONS}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |</doc>
+<status status="PASS" starttime="20220328 07:44:13.627" endtime="20220328 07:44:18.798"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:13.627" endtime="20220328 07:44:18.798"/>
+</kw>
+<kw name="Add new contact with random name and number" library="android_keywords">
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.android.dialer:id/contacts_tab</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:18.800" level="INFO">Clicking element 'com.android.dialer:id/contacts_tab'.</msg>
+<status status="PASS" starttime="20220328 07:44:18.798" endtime="20220328 07:44:19.387"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${empty_list}</var>
+<arg>Get Webelement</arg>
+<arg>com.android.dialer:id/empty_list_view_action</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Get Webelement" library="AppiumLibrary">
+<arg>com.android.dialer:id/empty_list_view_action</arg>
+<doc>Returns the first [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] object matching ``locator``.</doc>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20220328 07:44:19.720" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-1.png"&gt;&lt;img src="appium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220328 07:44:19.436" endtime="20220328 07:44:19.720"/>
+</kw>
+<msg timestamp="20220328 07:44:19.722" level="FAIL">ValueError: Element locator 'com.android.dialer:id/empty_list_view_action' did not match any elements.</msg>
+<status status="FAIL" starttime="20220328 07:44:19.388" endtime="20220328 07:44:19.722"/>
+</kw>
+<msg timestamp="20220328 07:44:19.722" level="INFO">${empty_list} = False</msg>
+<status status="PASS" starttime="20220328 07:44:19.387" endtime="20220328 07:44:19.722"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${empty_list}==${True}</arg>
+<arg>Click Element</arg>
+<arg>com.android.dialer:id/empty_list_view_action</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220328 07:44:19.722" endtime="20220328 07:44:19.723"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${empty_list}==${False}</arg>
+<arg>Click Text</arg>
+<arg>Create new contact</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click Text" library="AppiumLibrary">
+<arg>Create new contact</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" starttime="20220328 07:44:19.723" endtime="20220328 07:44:20.239"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:19.723" endtime="20220328 07:44:20.239"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>class=android.widget.EditText</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:20.240" endtime="20220328 07:44:21.556"/>
+</kw>
+<kw name="Enter contact data" library="android_keywords">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>class=android.widget.EditText</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:21.556" endtime="20220328 07:44:21.597"/>
+</kw>
+<kw name="Get Webelements" library="AppiumLibrary">
+<var>${elements}</var>
+<arg>class=android.widget.EditText</arg>
+<doc>Returns list of [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] objects matching ``locator``.</doc>
+<msg timestamp="20220328 07:44:21.627" level="INFO">${elements} = [&lt;appium.webdriver.webelement.WebElement (session="a6c393b1-df65-40f7-9c16-379659dc4d68", element="00000000-0000-024d-ffff-ffff000006e0")&gt;, &lt;appium.webdriver.webelement.WebElement (session="a6c393b1-d...</msg>
+<status status="PASS" starttime="20220328 07:44:21.597" endtime="20220328 07:44:21.627"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${first_name}</var>
+<arg>8</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220328 07:44:21.628" level="INFO">${first_name} = ifqzxnru</msg>
+<status status="PASS" starttime="20220328 07:44:21.627" endtime="20220328 07:44:21.628"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${last_name}</var>
+<arg>10</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220328 07:44:21.628" level="INFO">${last_name} = jdyducilvt</msg>
+<status status="PASS" starttime="20220328 07:44:21.628" endtime="20220328 07:44:21.628"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${number}</var>
+<arg>10</arg>
+<arg>[NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220328 07:44:21.628" level="INFO">${number} = 7929901121</msg>
+<status status="PASS" starttime="20220328 07:44:21.628" endtime="20220328 07:44:21.628"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${elements}[0]</arg>
+<arg>${first_name}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:21.630" level="INFO">Typing text 'ifqzxnru' into text field '&lt;appium.webdriver.webelement.WebElement (session="a6c393b1-df65-40f7-9c16-379659dc4d68", element="00000000-0000-024d-ffff-ffff000006e0")&gt;'</msg>
+<status status="PASS" starttime="20220328 07:44:21.628" endtime="20220328 07:44:22.273"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${elements}[1]</arg>
+<arg>${last_name}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:22.276" level="INFO">Typing text 'jdyducilvt' into text field '&lt;appium.webdriver.webelement.WebElement (session="a6c393b1-df65-40f7-9c16-379659dc4d68", element="00000000-0000-024d-ffff-ffff000006e2")&gt;'</msg>
+<status status="PASS" starttime="20220328 07:44:22.274" endtime="20220328 07:44:23.627"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${elements}[2]</arg>
+<arg>${number}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:23.629" level="INFO">Typing text '7929901121' into text field '&lt;appium.webdriver.webelement.WebElement (session="a6c393b1-df65-40f7-9c16-379659dc4d68", element="00000000-0000-024d-ffff-ffff00000707")&gt;'</msg>
+<status status="PASS" starttime="20220328 07:44:23.627" endtime="20220328 07:44:24.162"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.android.contacts:id/editor_menu_save_button</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:24.164" level="INFO">Clicking element 'com.android.contacts:id/editor_menu_save_button'.</msg>
+<status status="PASS" starttime="20220328 07:44:24.162" endtime="20220328 07:44:24.818"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${first_name}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220328 07:44:24.819" level="INFO">${first_name} = ifqzxnru</msg>
+<status status="PASS" starttime="20220328 07:44:24.819" endtime="20220328 07:44:24.819"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${last_name}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220328 07:44:24.819" level="INFO">${last_name} = jdyducilvt</msg>
+<status status="PASS" starttime="20220328 07:44:24.819" endtime="20220328 07:44:24.820"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${number}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220328 07:44:24.820" level="INFO">${number} = 7929901121</msg>
+<status status="PASS" starttime="20220328 07:44:24.820" endtime="20220328 07:44:24.820"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:21.556" endtime="20220328 07:44:24.820"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:18.798" endtime="20220328 07:44:24.820"/>
+</kw>
+<kw name="Verify added contact" library="android_keywords">
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.android.contacts:id/title_gradient</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:24.821" endtime="20220328 07:44:25.724"/>
+</kw>
+<kw name="Page Should Contain Text" library="AppiumLibrary">
+<arg>${first_name} ${last_name}</arg>
+<doc>Verifies that current page contains `text`.</doc>
+<msg timestamp="20220328 07:44:25.768" level="INFO">Current page contains text 'ifqzxnru jdyducilvt'.</msg>
+<status status="PASS" starttime="20220328 07:44:25.725" endtime="20220328 07:44:25.768"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:24.820" endtime="20220328 07:44:25.768"/>
+</kw>
+<kw name="Return to home screen" library="android_keywords" type="TEARDOWN">
+<kw name="Press Keycode" library="AppiumLibrary">
+<arg>3</arg>
+<doc>Sends a press of keycode to the device.</doc>
+<status status="PASS" starttime="20220328 07:44:25.769" endtime="20220328 07:44:25.841"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.apps.nexuslauncher:id/g_icon</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:25.841" endtime="20220328 07:44:26.459"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:25.769" endtime="20220328 07:44:26.460"/>
+</kw>
+<doc>Verify that user is able add new contact through Phone -application.
+Used name and number should be completely random so that this test can be ran multiple times without issues.
+You may create Phone -shortcut to desktop if you find that more convenient. You may also add one contact to the contact list before
+so you do not need to take empty list -scenario into account. You can also manually cancel any suggestions to add Google Account
+before developing the tests.</doc>
+<status status="PASS" starttime="20220328 07:44:13.626" endtime="20220328 07:44:26.460"/>
+</test>
+<test id="s1-t3" name="User Should Be Able To Add New Alarm">
+<kw name="Open clock application" library="android_keywords">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>http://127.0.0.1:4723/wd/hub</arg>
+<arg>automationName=${ANDROID_AUTOMATION_NAME}</arg>
+<arg>platformName=${ANDROID_PLATFORM_NAME}</arg>
+<arg>platformVersion=${ANDROID_PLATFORM_VERSION}</arg>
+<arg>appPackage=com.google.android.deskclock</arg>
+<arg>appActivity=com.android.deskclock.DeskClock</arg>
+<arg>noReset=true</arg>
+<arg>disableWindowAnimation=${WINDOW_ANIMATIONS}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |</doc>
+<status status="PASS" starttime="20220328 07:44:26.461" endtime="20220328 07:44:31.718"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:26.461" endtime="20220328 07:44:31.718"/>
+</kw>
+<kw name="Select alarm view" library="android_keywords">
+<kw name="Click Text" library="AppiumLibrary">
+<arg>Alarm</arg>
+<doc>Click text identified by ``text``.</doc>
+<status status="PASS" starttime="20220328 07:44:31.719" endtime="20220328 07:44:32.688"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:31.719" endtime="20220328 07:44:32.688"/>
+</kw>
+<kw name="Remove existing alarms" library="android_keywords">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${return_value}</var>
+<arg>Get Webelements</arg>
+<arg>com.google.android.deskclock:id/arrow</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Get Webelements" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/arrow</arg>
+<doc>Returns list of [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] objects matching ``locator``.</doc>
+<status status="PASS" starttime="20220328 07:44:32.689" endtime="20220328 07:44:32.724"/>
+</kw>
+<msg timestamp="20220328 07:44:32.724" level="INFO">${return_value} = True</msg>
+<status status="PASS" starttime="20220328 07:44:32.689" endtime="20220328 07:44:32.724"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>@{existing_alarms}</var>
+<arg>${return_value}==${True}</arg>
+<arg>Get Webelements</arg>
+<arg>com.google.android.deskclock:id/arrow</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Get Webelements" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/arrow</arg>
+<doc>Returns list of [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] objects matching ``locator``.</doc>
+<status status="PASS" starttime="20220328 07:44:32.725" endtime="20220328 07:44:33.213"/>
+</kw>
+<msg timestamp="20220328 07:44:33.213" level="INFO">@{existing_alarms} = [ &lt;appium.webdriver.webelement.WebElement (session="08070444-9dbb-4961-b89e-612f232ea7f1", element="00000000-0000-026d-ffff-ffff00000079")&gt; | &lt;appium.webdriver.webelement.WebElement (session="08070444...</msg>
+<status status="PASS" starttime="20220328 07:44:32.725" endtime="20220328 07:44:33.213"/>
+</kw>
+<for flavor="IN">
+<var>${alarm}</var>
+<value>@{existing_alarms}</value>
+<iter>
+<var name="${alarm}">&lt;appium.webdriver.webelement.WebElement (session="08070444-9dbb-4961-b89e-612f232ea7f1", element="00000000-0000-026d-ffff-ffff00000079")&gt;</var>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${alarm}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:33.213" endtime="20220328 07:44:33.225"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${alarm}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:33.227" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="08070444-9dbb-4961-b89e-612f232ea7f1", element="00000000-0000-026d-ffff-ffff00000079")&gt;'.</msg>
+<status status="PASS" starttime="20220328 07:44:33.226" endtime="20220328 07:44:33.271"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/delete</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:33.271" endtime="20220328 07:44:33.905"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/delete</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:33.907" level="INFO">Clicking element 'com.google.android.deskclock:id/delete'.</msg>
+<status status="PASS" starttime="20220328 07:44:33.905" endtime="20220328 07:44:33.997"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:33.213" endtime="20220328 07:44:33.997"/>
+</iter>
+<iter>
+<var name="${alarm}">&lt;appium.webdriver.webelement.WebElement (session="08070444-9dbb-4961-b89e-612f232ea7f1", element="00000000-0000-026d-ffff-ffff0000008a")&gt;</var>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${alarm}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:33.997" endtime="20220328 07:44:34.613"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${alarm}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:34.615" level="INFO">Clicking element '&lt;appium.webdriver.webelement.WebElement (session="08070444-9dbb-4961-b89e-612f232ea7f1", element="00000000-0000-026d-ffff-ffff0000008a")&gt;'.</msg>
+<status status="PASS" starttime="20220328 07:44:34.613" endtime="20220328 07:44:34.661"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/delete</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:34.661" endtime="20220328 07:44:35.299"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/delete</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:35.301" level="INFO">Clicking element 'com.google.android.deskclock:id/delete'.</msg>
+<status status="PASS" starttime="20220328 07:44:35.299" endtime="20220328 07:44:35.377"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:33.997" endtime="20220328 07:44:35.378"/>
+</iter>
+<status status="PASS" starttime="20220328 07:44:33.213" endtime="20220328 07:44:35.378"/>
+</for>
+<status status="PASS" starttime="20220328 07:44:32.688" endtime="20220328 07:44:35.378"/>
+</kw>
+<kw name="Add alarm" library="android_keywords">
+<arg>07</arg>
+<arg>00</arg>
+<arg>AM</arg>
+<arg>Wake Up</arg>
+<arg>false</arg>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/fab</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:35.378" endtime="20220328 07:44:36.054"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/fab</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:36.055" level="INFO">Clicking element 'com.google.android.deskclock:id/fab'.</msg>
+<status status="PASS" starttime="20220328 07:44:36.054" endtime="20220328 07:44:36.124"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>android:id/ampm_layout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:36.124" endtime="20220328 07:44:36.811"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${am_pm}'=='AM'</arg>
+<arg>Click Element</arg>
+<arg>android:id/am_label</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>android:id/am_label</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:36.813" level="INFO">Clicking element 'android:id/am_label'.</msg>
+<status status="PASS" starttime="20220328 07:44:36.812" endtime="20220328 07:44:36.874"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:36.811" endtime="20220328 07:44:36.874"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${am_pm}'=='PM'</arg>
+<arg>Click Element</arg>
+<arg>android:id/pm_label</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220328 07:44:36.874" endtime="20220328 07:44:36.875"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>android:id/toggle_mode</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:36.877" level="INFO">Clicking element 'android:id/toggle_mode'.</msg>
+<status status="PASS" starttime="20220328 07:44:36.875" endtime="20220328 07:44:37.414"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>android:id/input_hour</arg>
+<arg>${alarm_hour}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:37.416" level="INFO">Typing text '07' into text field 'android:id/input_hour'</msg>
+<status status="PASS" starttime="20220328 07:44:37.414" endtime="20220328 07:44:38.553"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>android:id/input_minute</arg>
+<arg>${alarm_min}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:38.555" level="INFO">Typing text '00' into text field 'android:id/input_minute'</msg>
+<status status="PASS" starttime="20220328 07:44:38.555" endtime="20220328 07:44:39.677"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>android:id/button1</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:39.679" level="INFO">Clicking element 'android:id/button1'.</msg>
+<status status="PASS" starttime="20220328 07:44:39.678" endtime="20220328 07:44:40.222"/>
+</kw>
+<kw name="Set vibrating on off" library="android_keywords">
+<arg>${vibrating}</arg>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/vibrate_onoff</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:40.223" endtime="20220328 07:44:40.927"/>
+</kw>
+<kw name="Get Element Attribute" library="AppiumLibrary">
+<var>${checked}</var>
+<arg>com.google.android.deskclock:id/vibrate_onoff</arg>
+<arg>checked</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<msg timestamp="20220328 07:44:40.965" level="INFO">Element 'com.google.android.deskclock:id/vibrate_onoff' attribute 'checked' value 'true' </msg>
+<msg timestamp="20220328 07:44:40.965" level="INFO">${checked} = true</msg>
+<status status="PASS" starttime="20220328 07:44:40.927" endtime="20220328 07:44:40.965"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${vibrating}'!='${checked}'</arg>
+<arg>Click Element</arg>
+<arg>com.google.android.deskclock:id/vibrate_onoff</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/vibrate_onoff</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:40.967" level="INFO">Clicking element 'com.google.android.deskclock:id/vibrate_onoff'.</msg>
+<status status="PASS" starttime="20220328 07:44:40.965" endtime="20220328 07:44:41.045"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:40.965" endtime="20220328 07:44:41.045"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:40.222" endtime="20220328 07:44:41.045"/>
+</kw>
+<kw name="Set alarm label" library="android_keywords">
+<arg>${alarm_label}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/edit_label</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:41.047" level="INFO">Clicking element 'com.google.android.deskclock:id/edit_label'.</msg>
+<status status="PASS" starttime="20220328 07:44:41.046" endtime="20220328 07:44:41.761"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/label_input_field</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:41.761" endtime="20220328 07:44:42.586"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/label_input_field</arg>
+<arg>${label}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:42.588" level="INFO">Typing text 'Wake Up' into text field 'com.google.android.deskclock:id/label_input_field'</msg>
+<status status="PASS" starttime="20220328 07:44:42.586" endtime="20220328 07:44:43.265"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>android:id/button1</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:43.267" level="INFO">Clicking element 'android:id/button1'.</msg>
+<status status="PASS" starttime="20220328 07:44:43.265" endtime="20220328 07:44:43.926"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:41.045" endtime="20220328 07:44:43.927"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:35.378" endtime="20220328 07:44:43.927"/>
+</kw>
+<kw name="Add alarm" library="android_keywords">
+<arg>10</arg>
+<arg>00</arg>
+<arg>AM</arg>
+<arg>Cook Lunch</arg>
+<arg>true</arg>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/fab</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:43.927" endtime="20220328 07:44:44.653"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/fab</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:44.654" level="INFO">Clicking element 'com.google.android.deskclock:id/fab'.</msg>
+<status status="PASS" starttime="20220328 07:44:44.653" endtime="20220328 07:44:44.721"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>android:id/ampm_layout</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:44.721" endtime="20220328 07:44:45.387"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${am_pm}'=='AM'</arg>
+<arg>Click Element</arg>
+<arg>android:id/am_label</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>android:id/am_label</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:45.389" level="INFO">Clicking element 'android:id/am_label'.</msg>
+<status status="PASS" starttime="20220328 07:44:45.388" endtime="20220328 07:44:45.455"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:45.387" endtime="20220328 07:44:45.455"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${am_pm}'=='PM'</arg>
+<arg>Click Element</arg>
+<arg>android:id/pm_label</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220328 07:44:45.456" endtime="20220328 07:44:45.456"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>android:id/toggle_mode</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:45.458" level="INFO">Clicking element 'android:id/toggle_mode'.</msg>
+<status status="PASS" starttime="20220328 07:44:45.456" endtime="20220328 07:44:45.993"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>android:id/input_hour</arg>
+<arg>${alarm_hour}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:45.995" level="INFO">Typing text '10' into text field 'android:id/input_hour'</msg>
+<status status="PASS" starttime="20220328 07:44:45.993" endtime="20220328 07:44:46.676"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>android:id/input_minute</arg>
+<arg>${alarm_min}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:46.678" level="INFO">Typing text '00' into text field 'android:id/input_minute'</msg>
+<status status="PASS" starttime="20220328 07:44:46.677" endtime="20220328 07:44:47.816"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>android:id/button1</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:47.818" level="INFO">Clicking element 'android:id/button1'.</msg>
+<status status="PASS" starttime="20220328 07:44:47.816" endtime="20220328 07:44:48.374"/>
+</kw>
+<kw name="Set vibrating on off" library="android_keywords">
+<arg>${vibrating}</arg>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/vibrate_onoff</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:48.374" endtime="20220328 07:44:49.064"/>
+</kw>
+<kw name="Get Element Attribute" library="AppiumLibrary">
+<var>${checked}</var>
+<arg>com.google.android.deskclock:id/vibrate_onoff</arg>
+<arg>checked</arg>
+<doc>Get element attribute using given attribute: name, value,...</doc>
+<msg timestamp="20220328 07:44:49.102" level="INFO">Element 'com.google.android.deskclock:id/vibrate_onoff' attribute 'checked' value 'true' </msg>
+<msg timestamp="20220328 07:44:49.102" level="INFO">${checked} = true</msg>
+<status status="PASS" starttime="20220328 07:44:49.064" endtime="20220328 07:44:49.102"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${vibrating}'!='${checked}'</arg>
+<arg>Click Element</arg>
+<arg>com.google.android.deskclock:id/vibrate_onoff</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220328 07:44:49.102" endtime="20220328 07:44:49.102"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:48.374" endtime="20220328 07:44:49.103"/>
+</kw>
+<kw name="Set alarm label" library="android_keywords">
+<arg>${alarm_label}</arg>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/edit_label</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:49.105" level="INFO">Clicking element 'com.google.android.deskclock:id/edit_label'.</msg>
+<status status="PASS" starttime="20220328 07:44:49.103" endtime="20220328 07:44:49.174"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/label_input_field</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:49.174" endtime="20220328 07:44:49.984"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>com.google.android.deskclock:id/label_input_field</arg>
+<arg>${label}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:49.986" level="INFO">Typing text 'Cook Lunch' into text field 'com.google.android.deskclock:id/label_input_field'</msg>
+<status status="PASS" starttime="20220328 07:44:49.984" endtime="20220328 07:44:50.653"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>android:id/button1</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220328 07:44:50.655" level="INFO">Clicking element 'android:id/button1'.</msg>
+<status status="PASS" starttime="20220328 07:44:50.653" endtime="20220328 07:44:51.325"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:49.103" endtime="20220328 07:44:51.326"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:43.927" endtime="20220328 07:44:51.326"/>
+</kw>
+<kw name="Write alarm count to log" library="android_keywords">
+<kw name="Get Webelements" library="AppiumLibrary">
+<var>${existing_alarms}</var>
+<arg>com.google.android.deskclock:id/arrow</arg>
+<doc>Returns list of [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] objects matching ``locator``.</doc>
+<msg timestamp="20220328 07:44:51.616" level="INFO">${existing_alarms} = [&lt;appium.webdriver.webelement.WebElement (session="08070444-9dbb-4961-b89e-612f232ea7f1", element="00000000-0000-026d-ffff-ffff0000008a")&gt;, &lt;appium.webdriver.webelement.WebElement (session="08070444-9...</msg>
+<status status="PASS" starttime="20220328 07:44:51.326" endtime="20220328 07:44:51.616"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${alarms}</var>
+<arg>${existing_alarms}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220328 07:44:51.617" level="INFO">Length is 2</msg>
+<msg timestamp="20220328 07:44:51.617" level="INFO">${alarms} = 2</msg>
+<status status="PASS" starttime="20220328 07:44:51.617" endtime="20220328 07:44:51.617"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>****** amount of alarms ${alarms} ******</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220328 07:44:51.617" level="INFO">****** amount of alarms 2 ******</msg>
+<status status="PASS" starttime="20220328 07:44:51.617" endtime="20220328 07:44:51.617"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:51.326" endtime="20220328 07:44:51.617"/>
+</kw>
+<kw name="Capture screenshot" library="android_keywords">
+<arg>alarms.png</arg>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<arg>${ss_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20220328 07:44:51.903" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="alarms.png"&gt;&lt;img src="alarms.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220328 07:44:51.618" endtime="20220328 07:44:51.903"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:51.617" endtime="20220328 07:44:51.903"/>
+</kw>
+<kw name="Return to home screen" library="android_keywords" type="TEARDOWN">
+<kw name="Press Keycode" library="AppiumLibrary">
+<arg>3</arg>
+<doc>Sends a press of keycode to the device.</doc>
+<status status="PASS" starttime="20220328 07:44:51.904" endtime="20220328 07:44:52.190"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>com.google.android.apps.nexuslauncher:id/g_icon</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<status status="PASS" starttime="20220328 07:44:52.190" endtime="20220328 07:44:52.693"/>
+</kw>
+<status status="PASS" starttime="20220328 07:44:51.903" endtime="20220328 07:44:52.693"/>
+</kw>
+<doc>Verify that user is able to set new alarm on Clock -application.
+First, test should remove all existing alarms if any. Test shouldn't fail whether there are alarms or no.
+Second, add new alarm at 7:00 AM, add "Wake Up" as label, and disable Vibrate checkbox.
+Third, add new alarm at 10:00 AM, add "Cook Lunch" as label, don't disable vibrate checkbox.
+Last, test should count amount of alarms to log, and take screenshot of the alarm page, and exit to desktop.
+You may make shortcut of Clock application to desktop if you want that more convenient.</doc>
+<status status="PASS" starttime="20220328 07:44:26.460" endtime="20220328 07:44:52.693"/>
+</test>
+<kw name="Close Application" library="AppiumLibrary" type="TEARDOWN">
+<doc>Closes the current application and also close webdriver session.</doc>
+<status status="PASS" starttime="20220328 07:44:52.693" endtime="20220328 07:44:52.857"/>
+</kw>
+<doc>Welcome to Virta Global Interview Assignments!
+There are 3 Tasks defined here, each as their own independend test case.
+Your assignment is to make those test cases work. The instructions are given on test cases documentation.
+
+Please write test cases in Keyword Driven -style. You are encouraged to re-use keywords where possible.
+Write keywords in the included resources/android_keywords.robot -file, its already included here as a resource.
+
+Estimated length for writing these tests is in total 2-3 hours, but feel free to be faster.
+Estimate does not contain the time it takes to setup the environment: Appium, Python, IDE, etc.
+You may import builtin robot framework libraries in addition to necessary Appium libraries, but you shouldn't need any
+other external libraries.
+
+What do you need:
+- Android 12 emulator. Use Google Pixel 5 as hardware profile, and then Android 12 as OS version.
+- Appium, Robot Framework, and necessary libraries to run the tests.
+
+What to return to us:
+- Code in public git repository, or that git repository folder in a zip/tar.
+- Include robotframework log and report where all tests have passed, place them in the output/ folder,
+including necessary screenshots.
+- Working code. We should be able to run it. If it requires some specific setup, include short readme-file what we need to
+do in order to run them (emulator with certain name, etc.)
+- Bash script in scripts/ folder, that when executed will run this spefic tests file from tests/ folder.
+- Execution script should:
+- Rename test suite as "VirtaGlobal_Tests"
+- Generate all output to output/ directory on main folder
+- After test execution, echo whether tests passed or failed (and how many failed).
+
+If you don't get everything done, thats not the end of the world. In that case show what you tried and your reasoning
+there.
+Remember! There are always many ways to achieve the goal.
+
+Have fun!</doc>
+<status status="PASS" starttime="20220328 07:43:59.873" endtime="20220328 07:44:52.857"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="VirtaGlobal_Tests">VirtaGlobal_Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
